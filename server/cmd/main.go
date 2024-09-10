@@ -5,6 +5,7 @@ import (
 
 	"github.com/Sergio-Na/argus/server/config"
 	"github.com/Sergio-Na/argus/server/internal/server"
+	"github.com/Sergio-Na/argus/server/internal/supabase"
 )
 
 func main() {
@@ -13,7 +14,12 @@ func main() {
 		log.Fatalf("Failed to load configuration: %v", err)
 	}
 
-	s, err := server.New(cfg)
+	supaClient, err := supabase.NewSupabaseClient(cfg.SupabaseURL, cfg.SupabaseKey)
+	if err != nil {
+		log.Fatalf("Failed to create Supabase client: %v", err)
+	}
+
+	s, err := server.New(cfg, supaClient)
 	if err != nil {
 		log.Fatalf("Failed to create server: %v", err)
 	}
