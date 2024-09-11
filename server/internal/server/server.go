@@ -44,8 +44,8 @@ func (s *Server) Run() error {
 
 func (s *Server) registerRoutes() {
 	s.router.GET("/", s.handler.Home)
-	s.router.POST("/signup", s.handler.SignUp)
-	s.router.POST("/signin", s.handler.SignIn)
+	s.router.POST("/signUp", s.handler.SignUp)
+	s.router.POST("/login", s.handler.Login)
 
 	authorized := s.router.Group("/")
 	authorized.Use(s.authMiddleware())

@@ -35,7 +35,7 @@ func (h *Handler) SignUp(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "email and password required"})
 		return
 	}
-	
+
 	err := h.auth.SignUp(req.Email, req.Password)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -54,7 +54,7 @@ func (h *Handler) SignUp(c *gin.Context) {
 	})
 }
 
-func (h *Handler) SignIn(c *gin.Context) {
+func (h *Handler) Login(c *gin.Context) {
 	var req struct {
 		Email    string `json:"email" binding:"required"`
 		Password string `json:"password" binding:"required"`
