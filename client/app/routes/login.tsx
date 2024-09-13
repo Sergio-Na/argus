@@ -14,8 +14,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const password = formData.get('password') as string
     const response = await login(email, password)
     console.log(response)
-    // Here you would typically validate the credentials and log the user in
-    // For this example, we'll just return a success message
+
     return json({ success: true, message: 'Login successful' })
 }
 

@@ -14,8 +14,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const password = formData.get('password') as string
     const response = await signUp(email, password)
     console.log(response)
-    // Here you would typically validate the input and create the user
-    // For this example, we'll just return a success message
+    
     return json({ success: true, message: 'User created successfully' })
 }
 
